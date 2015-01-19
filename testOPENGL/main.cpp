@@ -26,11 +26,50 @@ color barneyPurple(0.60,0.40,0.70,1);
 color githubGreen(0.51,0.82,0.7,1);
 
 GLBatch triangleBatch;
+GLBatch githubBatch;
 GLShaderManager shaderManager;
 
 GLfloat vVerts[] = {-0.5f,0.0f,0.0f,
 		0.5f,0.0f,0.0f,
 		0.0f,0.5f,0.0f};
+
+GLfloat ghVerts[36][3] = {-0.1,0,0,
+		0,-0,0,
+		-0.1,-0.1,0,
+		0,-0,0,
+		-0.1,-0.1,0,
+		0,-0.1,0,
+		-0.1,0.3,0,//
+		0,0.3,0,
+		-0.1,0.2,0,
+		0,0.3,0,
+		-0.1,0.2,0,
+		0,0.2,0,
+		0,0,0,//right from here
+		0.2,0,0,
+		0.2,0.1,0,
+		0,0,0,
+		0,0.1,0,
+		0.2,0.1,0,
+		0.1,0.3,0,
+		0.1,0.1,0,
+		0.2,0.3,0,
+		0.1,0.1,0,
+		0.2,0.3,0,
+		0.2,0.1,0,
+		-0.1,0,0,//left from here
+		-0.3,0,0,
+		-0.3,0.1,0,
+		-0.1,0,0,
+		-0.1,0.1,0,
+		-0.3,0.1,0,
+		-0.2,0.3,0,
+		-0.2,0.1,0,
+		-0.3,0.3,0,
+		-0.2,0.1,0,
+		-0.3,0.3,0,
+		-0.3,0.1,0
+};
 //end global var,-ingle
 /////////////////////////////////////////
 //绘制场景
@@ -39,36 +78,31 @@ void RenderScene(void)
 	//用当前清除颜色清除窗口
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
 
-	////TODO:draw sth
-	////set color in draw
-	//glColor3f(githubGreen.r,githubGreen.g,githubGreen.b);
-
-	////draw a rectangle
-	////left
-	//glRectf(-25.0f,25.0f,0,0.0f);
-	//glRectf(-50,25,-25,0);
-	//glRectf(-50,50,-25,25);
-	//glRectf(-50,75,-25,50);
-	////bottom
-	//glRectf(0,0,25,-25);
-	////top
-	//glRectf(0,50,25,75);
-	////right
-	//glRectf(25,0,50,25);
-	//glRectf(50,0,75,25);
-	//glRectf(50,25,75,50);
-	//glRectf(50,50,75,75);
-
-	//glBegin(GL_POLYGON);
-	//glVertex3f(75,75,0);
-	//glVertex3f(75,100,0);
-	//glVertex3f(100,75,0);
-	//glEnd();
-
 	GLfloat vRed[] = {1.0f,0.0f,0.0f,1.0f};
 	shaderManager.UseStockShader(GLT_SHADER_IDENTITY,vRed);
 	triangleBatch.Draw();
 
+	GLfloat vGithubGreen[] = {githubGreen.r,githubGreen.g,githubGreen.b,0.5};
+	shaderManager.UseStockShader(GLT_SHADER_IDENTITY, vGithubGreen);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	githubBatch.Draw();
+	glDisable(GL_BLEND);
+
+	//TODO:draw the WireFrame
+	glPolygonOffset(-1.0f,-1.0f);
+	glEnable(GL_POLYGON_OFFSET_LINE);
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_BLEND);
+	glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+	glLineWidth(0.5f);
+	GLfloat vblack[] = {0,0,0,1};
+	shaderManager.UseStockShader(GLT_SHADER_IDENTITY,vblack);
+	githubBatch.Draw();
+	glDisable(GL_LINE_SMOOTH);
+	glDisable(GL_POLYGON_OFFSET_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glDisable(GL_BLEND);
 	//perform the buffer swap to display the back buffer
 	glutSwapBuffers();
 
@@ -89,6 +123,10 @@ void SetupRC(color bg,float alpha)
 	triangleBatch.Begin(GL_TRIANGLES,3);
 	triangleBatch.CopyVertexData3f(vVerts);
 	triangleBatch.End();
+
+	githubBatch.Begin(GL_TRIANGLES,36);//TODO:change 3 to the right value
+	githubBatch.CopyVertexData3f(ghVerts);//TODO;fill ghVerts
+	githubBatch.End();
 }
 
 /////////////////////////////////////////
@@ -102,7 +140,7 @@ void ChangeSize(GLsizei w,GLsizei h)
 		h = 1;
 
 	int viewportSize = w>h?h:w;
-	glViewport(0,0,w,h);
+	glViewport(0,0,viewportSize,viewportSize);
 
 	glMatrixMode(GL_PROJECTION);//specify which matrix is the current matrix
 	glLoadIdentity();
@@ -140,6 +178,13 @@ int main(int argc,char* argv[])
 
 	SetupRC(barneyPurple,1);
 
+	//test point size range
+	GLfloat sizes[2];
+	GLfloat step;
+
+	glGetFloatv(GL_POINT_SIZE_RANGE,sizes);
+	glGetFloatv(GL_POINT_SIZE_GRANULARITY,&step);
+
 	glutMainLoop();
 	return 0;
 }
@@ -152,7 +197,7 @@ void SpecialKeys(int key,int x,int y)
 	GLfloat blockY = vVerts[7];
 
 	//TODO:find out blockSize's value
-	GLfloat blockSize = 0.5f;
+	GLfloat blockSize = 0.2f;
 
 	if(key == GLUT_KEY_UP)
 	{
