@@ -1,0 +1,14 @@
+#version 330
+
+//in
+in vec4 vVertex;
+in vec2 vTexCoords;
+
+//out
+smooth out vec2 vVaryingTexCoords;
+
+void main(void)
+{
+	vVaryingTexCoords = vTexCoords;
+	gl_Position = vVertex;
+}

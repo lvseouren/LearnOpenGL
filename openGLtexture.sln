@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mars and moon", "openGLtexture\openGLtexture.vcxproj", "{2F3454AF-F967-4325-BDA6-FC2E472B7541}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shaderTriangle", "shaderTriangle\shaderTriangle.vcxproj", "{38314E63-6DA3-40D2-9751-78A6ED8BB2EE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextureAndShader", "TextureAndShader\TextureAndShader.vcxproj", "{45A17934-1C02-4002-B76F-6EF393011E71}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "meltTorus", "meltTorus\meltTorus.vcxproj", "{1DE88614-D1A6-4312-BB34-7DC596FEB9A2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cell shading", "cell shading\cell shading.vcxproj", "{31FF8329-108E-4A72-97FF-76814D2A2365}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cubeMap", "cubeMap\cubeMap.vcxproj", "{D32C7413-65A1-4BAA-96D1-9F4EC1D21291}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F3454AF-F967-4325-BDA6-FC2E472B7541}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F3454AF-F967-4325-BDA6-FC2E472B7541}.Debug|Win32.Build.0 = Debug|Win32
+		{2F3454AF-F967-4325-BDA6-FC2E472B7541}.Release|Win32.ActiveCfg = Release|Win32
+		{2F3454AF-F967-4325-BDA6-FC2E472B7541}.Release|Win32.Build.0 = Release|Win32
+		{38314E63-6DA3-40D2-9751-78A6ED8BB2EE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{38314E63-6DA3-40D2-9751-78A6ED8BB2EE}.Debug|Win32.Build.0 = Debug|Win32
+		{38314E63-6DA3-40D2-9751-78A6ED8BB2EE}.Release|Win32.ActiveCfg = Release|Win32
+		{38314E63-6DA3-40D2-9751-78A6ED8BB2EE}.Release|Win32.Build.0 = Release|Win32
+		{45A17934-1C02-4002-B76F-6EF393011E71}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45A17934-1C02-4002-B76F-6EF393011E71}.Debug|Win32.Build.0 = Debug|Win32
+		{45A17934-1C02-4002-B76F-6EF393011E71}.Release|Win32.ActiveCfg = Release|Win32
+		{45A17934-1C02-4002-B76F-6EF393011E71}.Release|Win32.Build.0 = Release|Win32
+		{1DE88614-D1A6-4312-BB34-7DC596FEB9A2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1DE88614-D1A6-4312-BB34-7DC596FEB9A2}.Debug|Win32.Build.0 = Debug|Win32
+		{1DE88614-D1A6-4312-BB34-7DC596FEB9A2}.Release|Win32.ActiveCfg = Release|Win32
+		{1DE88614-D1A6-4312-BB34-7DC596FEB9A2}.Release|Win32.Build.0 = Release|Win32
+		{31FF8329-108E-4A72-97FF-76814D2A2365}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31FF8329-108E-4A72-97FF-76814D2A2365}.Debug|Win32.Build.0 = Debug|Win32
+		{31FF8329-108E-4A72-97FF-76814D2A2365}.Release|Win32.ActiveCfg = Release|Win32
+		{31FF8329-108E-4A72-97FF-76814D2A2365}.Release|Win32.Build.0 = Release|Win32
+		{D32C7413-65A1-4BAA-96D1-9F4EC1D21291}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D32C7413-65A1-4BAA-96D1-9F4EC1D21291}.Debug|Win32.Build.0 = Debug|Win32
+		{D32C7413-65A1-4BAA-96D1-9F4EC1D21291}.Release|Win32.ActiveCfg = Release|Win32
+		{D32C7413-65A1-4BAA-96D1-9F4EC1D21291}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
